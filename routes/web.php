@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('login/index');
 });
 Route::middleware(['auth'])->group(function () {
@@ -27,4 +27,4 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 Route::get('/logout', [FormInput::class, 'logout'])->name('logout');
-Route::get('/upload', [FormInput::class, 'store'])->name('store');
+Route::get('/upload', [FormInput::class, 'store'])->name('dropzone.store');
