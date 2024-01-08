@@ -113,15 +113,6 @@ class FormInput extends Component
         $this->forms = array_values($this->forms);
     }
 
-    public function store()
-    {
-        $this->validate([
-            'file' => 'image|max:2048'
-        ]);
-
-        $this->reset('file');
-    }
-
     protected $rules = [
         'namaPengirim' => 'required',
         'noPenerima' => 'required',
@@ -129,16 +120,15 @@ class FormInput extends Component
         'totalBeratKotor' => 'required|numeric|min:0.1',
         'totalBeratReal' => 'required|numeric|min:0.1',
         'beratTimbangan' => 'required|numeric|min:0.1',
-        // 'beratSelisih' => 'required',
+        'beratSelisih' => 'required',
         'tanggal' => 'required',
         'catatan' => 'required',
         'supplier' => 'required',
-        //'userId' => 'required',
-        //'pembayaranId' => 'required',
-        // 'parameterKarat' => 'required',
-        // 'beratReal' => 'required|numeric|min:0.1',
-        // 'beratKotor' => 'required|numeric|min:0.1',
-        'tipePembayaran' => 'required'
+        'parameterKarat' => 'required',
+        'beratReal' => 'required|numeric|min:0.1',
+        'beratKotor' => 'required|numeric|min:0.1',
+        'tipePembayaran' => 'required',
+        'file' => 'image|max:2048'
     ];
 
     public function simpan()
@@ -191,7 +181,8 @@ class FormInput extends Component
                 'forms',
                 'tipePembayaran',
                 'jatuhTempo',
-                'harga'
+                'harga',
+                'file'
             ]);
 
             $this->noPenerima = $tempNoPenerima;

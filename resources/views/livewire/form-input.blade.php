@@ -17,9 +17,10 @@
     @endif
 
     <form wire:submit.prevent="simpan">
+        @csrf
         <div class="row mb-3">
             <div class="col-md-12">
-                <div action="{{ route('dropzone.store') }}" id="myDropzone" class="dropzone"></div>
+                <div id="myDropzone" class="dropzone" enctype="multipart/form-data"></div>
             </div>
         </div>
         <div class="row mb-3">
@@ -211,13 +212,3 @@
         </div>
     </form>
 </div>
-
-<script>
-    Dropzone.autoDiscover = false;
-
-    var myDropzone = new Dropzone("#myDropzone", {
-        url: "/upload",
-        paramName: "file",
-        maxFilesize: 2,
-    });
-</script>
