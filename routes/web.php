@@ -27,4 +27,4 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 Route::get('/logout', [FormInput::class, 'logout'])->name('logout');
-Route::get('/upload', [FormInput::class, 'store'])->name('dropzone.store');
+Route::post('/upload', [FormInput::class, 'store'])->name('dropzone.store');

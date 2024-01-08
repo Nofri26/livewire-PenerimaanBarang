@@ -63,13 +63,13 @@
             <div class="row mb-3">
                 <div class="col-md-3">
                     <label for="parameterKarat" class="form-label">Parameter Karat</label>
-                    <select name="parameterKarat" class="form-select @error('parameterKarat') is-invalid @enderror" wire:model="forms.{{ $key }}.parameterKarat">
+                    <select name="parameterKarat" class="form-select @error('forms.*.parameterKarat') is-invalid @enderror" wire:model="forms.{{ $key }}.parameterKarat">
                         <option hidden>Select Karat</option>
                         @foreach ($karat as $item)
                             <option value="{{ $item->id }}">{{ $item->parameter }}</option>
                         @endforeach
                     </select>
-                    @error('parameterKarat')
+                    @error('forms.*.parameterKarat')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -77,8 +77,8 @@
                 </div>
                 <div class="col-md-3">
                     <label for="beratReal" class="form-label">Berat Real</label>
-                    <input type="number" step="0.1" class="form-control @error('beratReal') is-invalid @enderror" placeholder="0" wire:model="forms.{{ $key }}.beratReal" wire:change="hitungTotalBeratReal">
-                    @error('beratReal')
+                    <input type="number" step="0.1" class="form-control @error('forms.*.beratReal') is-invalid @enderror" placeholder="0" wire:model="forms.{{ $key }}.beratReal" wire:change="hitungTotalBeratReal">
+                    @error('forms.*.beratReal')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -86,8 +86,8 @@
                 </div>
                 <div class="col-md-3">
                     <label for="beratKotor" class="form-label">Berat Kotor</label>
-                    <input type="number" step="0.1" class="form-control @error('beratKotor') is-invalid @enderror" placeholder="0" wire:model="forms.{{ $key }}.beratKotor">
-                    @error('beratKotor')
+                    <input type="number" step="0.1" class="form-control @error('forms.*.beratKotor') is-invalid @enderror" placeholder="0" wire:model="forms.{{ $key }}.beratKotor">
+                    @error('forms.*.beratKotor')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

@@ -4,11 +4,12 @@ namespace App\Http\Livewire;
 
 use App\Models\Berat;
 use App\Models\Karat;
-use App\Models\Pembayaran;
 use Livewire\Component;
 use App\Models\Penerima;
 use App\Models\Supplier;
+use App\Models\Pembayaran;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\DB;
 
 class FormInput extends Component
 {
@@ -134,6 +135,7 @@ class FormInput extends Component
     public function simpan()
     {
         $this->validate();
+        DB::beginTransaction();
         try {
             $pembayaran = Pembayaran::create([
                 'tipe' => $this->tipePembayaran,
@@ -187,9 +189,10 @@ class FormInput extends Component
 
             $this->noPenerima = $tempNoPenerima;
             $this->forms = $tempForms;
+            DB::commit();
             session()->flash('success', 'Data berhasil disimpan');
         } catch (\Exception $e) {
-
+            DB::rollBack();
             session()->flash('error', session('id') . 'Gagal menyimpan data. Error: ' . $e->getMessage());
         }
     }
