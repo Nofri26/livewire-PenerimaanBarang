@@ -16,13 +16,13 @@
         </div>
     @endif
 
-    <form wire:submit.prevent="simpan">
-        @csrf
-        <div class="row mb-3">
-            <div class="col-md-12">
-                <div id="myDropzone" class="dropzone" enctype="multipart/form-data"></div>
-            </div>
+    @csrf
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <div id="myDropzone" class="dropzone" enctype="multipart/form-data"></div>
         </div>
+    </div>
+    <form wire:submit.prevent="simpan">
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="penerimaanBarang" class="form-label">No Penerimaan Barang</label>

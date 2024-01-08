@@ -124,11 +124,11 @@ class FormInput extends Component
         'tanggal' => 'required',
         'catatan' => 'required',
         'supplier' => 'required',
-        'parameterKarat' => 'required',
-        'beratReal' => 'required|numeric|min:0.1',
-        'beratKotor' => 'required|numeric|min:0.1',
+        'forms.*.parameterKarat' => 'required',
+        'forms.*.beratReal' => 'required|numeric|min:0.1',
+        'forms.*.beratKotor' => 'required|numeric|min:0.1',
         'tipePembayaran' => 'required',
-        'file' => 'image|max:2048'
+        // 'file' => 'image|max:2048'
     ];
 
     public function simpan()
@@ -147,9 +147,9 @@ class FormInput extends Component
                 'no_penerima' => $this->noPenerima,
                 'invoice' => $this->invoice,
                 'total_berat_kotor' => $this->totalBeratKotor,
-                'total_berat_real' => 1,
+                'total_berat_real' => $this->totalBeratReal,
                 'berat_timbangan' => $this->beratTimbangan,
-                'berat_selisih' => 1,
+                'berat_selisih' => $this->beratSelisih,
                 'tanggal' => $this->tanggal,
                 'catatan' => $this->catatan,
                 'supplier_id' => $this->supplier,
@@ -182,7 +182,7 @@ class FormInput extends Component
                 'tipePembayaran',
                 'jatuhTempo',
                 'harga',
-                'file'
+                // 'file'
             ]);
 
             $this->noPenerima = $tempNoPenerima;
